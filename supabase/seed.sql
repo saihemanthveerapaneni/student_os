@@ -1,0 +1,5 @@
+-- Seed data is automated!
+-- In StudentOS, seed data is handled dynamically when a user registers on the platform.
+-- The trigger `on_auth_user_created` calls the PostgreSQL function `seed_user_data(new.id)`
+-- which automatically populates courses, timetables, notes, and tasks for the new user.
+-- This ensures a custom and immediate onboarding experience for every newly registered student.
