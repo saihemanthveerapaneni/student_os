@@ -162,6 +162,7 @@
 }
 
 input, textarea {
+  color: #1a1a2e !important;
   font-family: var(--font-space-grotesk), sans-serif !important;
   line-height: 1.5 !important;
   position: relative !important;
