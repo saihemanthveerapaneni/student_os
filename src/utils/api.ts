@@ -52,7 +52,11 @@ async function request<T>(
     if (fallbackKey && result) {
       let dataToSync = result;
       if (result.data) dataToSync = result.data;
-      localStorage.setItem(fallbackKey, JSON.stringify(dataToSync));
+      const newStr = JSON.stringify(dataToSync);
+      const oldStr = localStorage.getItem(fallbackKey);
+      if (newStr !== oldStr) {
+        localStorage.setItem(fallbackKey, newStr);
+      }
     }
     return result as T;
   } catch (error) {
