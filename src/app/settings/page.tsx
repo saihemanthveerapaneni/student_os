@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ClearChatModal from '@/components/ClearChatModal';
 import { api } from '../../utils/api';
+import { useTheme } from '@/components/ThemeProvider';
+import { createClient } from '@/lib/supabase/client';
 
 interface SettingsState {
   theme: 'light' | 'dark' | 'system';
@@ -62,6 +64,8 @@ export default function SettingsPage() {
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [isClearingChat, setIsClearingChat] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  
+  const { theme: currentTheme, setThemeState, setAccentColor, setFontSize } = useTheme();
 
   // Load settings on mount
   useEffect(() => {
@@ -119,13 +123,32 @@ export default function SettingsPage() {
     }
   };
 
+  const handleChangePassword = async () => {
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user?.email) {
+      const { error } = await supabase.auth.resetPasswordForEmail(user.email);
+      if (error) {
+        showToast('Error: ' + error.message);
+      } else {
+        showToast('Password reset email dispatched to ' + user.email);
+      }
+    } else {
+      showToast('No email associated with account.');
+    }
+  };
+
   const executeModalAction = async () => {
     if (activeModal === 'delete_data') {
       localStorage.clear();
       showToast('All browser local data has been reset.');
       setTimeout(() => window.location.reload(), 1500);
     } else if (activeModal === 'delete_account') {
-      showToast('Account deletion simulated successfully!');
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      localStorage.clear();
+      showToast('Account deleted and signed out successfully!');
+      setTimeout(() => window.location.href = '/', 1000);
     }
     setActiveModal(null);
   };
@@ -203,7 +226,7 @@ export default function SettingsPage() {
                   </div>
                   <div className="flex gap-2">
                     <button 
-                      onClick={() => showToast('Password reset email dispatched!')}
+                      onClick={handleChangePassword}
                       className="bg-white border-2 border-on-surface py-1 px-3 font-space-grotesk font-bold text-xs uppercase shadow-[1.5px_1.5px_0_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer text-on-surface"
                     >
                       Change Password
@@ -253,7 +276,10 @@ export default function SettingsPage() {
                     {['light', 'dark', 'system'].map((t) => (
                       <button
                         key={t}
-                        onClick={() => saveSettings({ ...settings, theme: t as any })}
+                        onClick={() => {
+                          saveSettings({ ...settings, theme: t as any });
+                          setThemeState(t as any);
+                        }}
                         className={`px-3 py-1 font-space-grotesk font-bold text-xs uppercase transition-colors cursor-pointer ${
                           settings.theme === t ? 'bg-[#ffe251] text-on-surface' : 'text-on-surface/50 hover:text-on-surface'
                         }`}
@@ -285,7 +311,10 @@ export default function SettingsPage() {
                       return (
                         <button
                           key={c}
-                          onClick={() => saveSettings({ ...settings, accentColor: c })}
+                          onClick={() => {
+                            saveSettings({ ...settings, accentColor: c });
+                            setAccentColor(c);
+                          }}
                           className={`w-6 h-6 rounded-full border-2 ${bgClass} ${borderClass} cursor-pointer transition-all`}
                         />
                       );
@@ -303,7 +332,10 @@ export default function SettingsPage() {
                     {['small', 'medium', 'large'].map((size) => (
                       <button
                         key={size}
-                        onClick={() => saveSettings({ ...settings, fontSize: size as any })}
+                        onClick={() => {
+                          saveSettings({ ...settings, fontSize: size as any });
+                          setFontSize(size);
+                        }}
                         className={`px-3 py-1 font-space-grotesk font-bold text-xs uppercase transition-colors cursor-pointer ${
                           settings.fontSize === size ? 'bg-[#ffe251] text-on-surface' : 'text-on-surface/50 hover:text-on-surface'
                         }`}
