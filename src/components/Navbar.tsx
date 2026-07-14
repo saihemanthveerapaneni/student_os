@@ -583,17 +583,7 @@ export default function Navbar() {
                 </h1>
               </div>
 
-              {!isEditingProfile && !profileError && (
-                <button
-                  onClick={() => {
-                    setTempProfile({ ...profile });
-                    setIsEditingProfile(true);
-                  }}
-                  className="bg-[#ffe251] text-on-surface border-3 border-on-surface px-5 py-2 font-space-grotesk font-bold uppercase text-xs rounded-full shadow-[2px_2px_0_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer"
-                >
-                  Edit Profile
-                </button>
-              )}
+
             </header>
 
             {/* Scrollable Modal Content */}
