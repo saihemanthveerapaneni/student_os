@@ -61,6 +61,34 @@ export default function SettingsPage() {
     2: true,
   });
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const sectionParam = params.get('section');
+      if (sectionParam) {
+        const sectionId = parseInt(sectionParam, 10);
+        if (!isNaN(sectionId) && sectionId >= 1 && sectionId <= 6) {
+          // Collapse all and only expand the selected one
+          setExpandedSections({ [sectionId]: true });
+          
+          // Scroll down to ensure it's visible if it's lower down
+          setTimeout(() => {
+            const sectionTitles = [
+              '1. ACCOUNT SETTINGS',
+              '2. APPEARANCE & STYLING',
+              '3. TIMETABLE PREFERENCES',
+              '4. AI ASSISTANT',
+              '5. CALENDAR CONFIGURATIONS',
+              '6. ABOUT STUDENTOS'
+            ];
+            // Just a basic scroll approach
+            window.scrollTo({ top: (sectionId - 1) * 120, behavior: 'smooth' });
+          }, 300);
+        }
+      }
+    }
+  }, []);
+
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [isClearingChat, setIsClearingChat] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
