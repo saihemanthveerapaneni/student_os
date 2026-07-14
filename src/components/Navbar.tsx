@@ -322,6 +322,16 @@ export default function Navbar() {
     };
   }, [isProfileOpen]);
 
+  useEffect(() => {
+    const handleOpenProfileModal = () => {
+      setTempProfile({ ...profile });
+      setIsEditingProfile(true);
+      setIsProfileOpen(true);
+    };
+    window.addEventListener('open-profile-modal', handleOpenProfileModal);
+    return () => window.removeEventListener('open-profile-modal', handleOpenProfileModal);
+  }, [profile]);
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {

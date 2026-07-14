@@ -214,9 +214,12 @@ export default function SettingsPage() {
                     <h3 className="font-bold text-lg">Manage Profile Details</h3>
                     <p className="text-on-surface-variant text-sm">Update Student Roll ID, Branch, Major, and Social links.</p>
                   </div>
-                  <span className="text-sm font-space-grotesk font-bold uppercase bg-[#ffe251] px-3 py-1.5 border-2 border-on-surface shadow-[1.5px_1.5px_0_rgba(0,0,0,1)]">
-                    Available in Top Avatar
-                  </span>
+                  <button 
+                    onClick={() => window.dispatchEvent(new Event('open-profile-modal'))}
+                    className="text-sm font-space-grotesk font-bold uppercase bg-[#ffe251] px-3 py-1.5 border-2 border-on-surface shadow-[1.5px_1.5px_0_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer text-on-surface"
+                  >
+                    Open Profile Editor
+                  </button>
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-on-surface/10 pb-4">
