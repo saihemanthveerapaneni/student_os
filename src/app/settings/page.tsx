@@ -11,14 +11,7 @@ interface SettingsState {
   theme: 'light' | 'dark' | 'system';
   accentColor: string;
   fontSize: 'small' | 'medium' | 'large';
-  notifications: {
-    assignments: boolean;
-    exams: boolean;
-    timetable: boolean;
-    attendance: boolean;
-    dailyStudy: boolean;
-    aiAssistant: boolean;
-  };
+
   timetablePrefs: {
     weekStart: string;
     classDuration: number;
@@ -35,16 +28,7 @@ interface SettingsState {
     defaultView: 'day' | 'week';
     weekStartsMonday: boolean;
   };
-  privacy: {
-    visibility: 'public' | 'private' | 'classmates';
-    hideStats: boolean;
-  };
-  region: {
-    language: string;
-    timezone: string;
-    dateFormat: string;
-    timeFormat: '12h' | '24h';
-  };
+
 }
 
 export default function SettingsPage() {
@@ -52,11 +36,6 @@ export default function SettingsPage() {
     theme: 'light',
     accentColor: 'yellow',
     fontSize: 'medium',
-      timetable: true,
-      attendance: true,
-      dailyStudy: false,
-      aiAssistant: true,
-    },
     timetablePrefs: {
       weekStart: 'Monday',
       classDuration: 60,
