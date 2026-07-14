@@ -12,9 +12,7 @@ class Config:
     SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "")
     SUPABASE_JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET", "")
 
-    AI_PROVIDER = os.getenv("AI_PROVIDER", "anthropic").lower()
-    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+    AI_PROVIDER = os.getenv("AI_PROVIDER", "groq").lower()
     GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 
     BACKEND_CORS_ORIGINS = os.getenv(

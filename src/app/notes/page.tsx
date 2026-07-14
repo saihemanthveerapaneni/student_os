@@ -179,13 +179,6 @@ function NotesContent() {
                 style={{ transform: `rotate(${rotateDeg}deg)` }}
                 className={`${n.color} text-on-surface p-6 neubrutal-border neubrutal-shadow flex flex-col gap-4 hover:rotate-0 hover:scale-[1.02] transition-all cursor-pointer relative group`}
               >
-                <button
-                  onClick={(e) => handleDeleteNote(n.id, e)}
-                  className="absolute top-2 right-8 opacity-0 group-hover:opacity-100 hover:scale-110 text-xs font-bold bg-white border-2 border-on-surface w-6 h-6 rounded-full flex items-center justify-center shadow-[1px_1px_0_rgba(0,0,0,1)] transition-opacity"
-                  title="Delete note"
-                >
-                  ×
-                </button>
                 <div className="flex justify-between items-start">
                   <span className="inline-block border-2 border-on-surface bg-white px-2 py-1 text-xs font-space-grotesk font-bold uppercase text-on-surface">
                     {n.tag}
@@ -212,6 +205,13 @@ function NotesContent() {
 
                 <div className="pt-4 border-t-2 border-on-surface/20 flex justify-between items-center text-xs text-on-surface">
                   <span className="font-space-grotesk font-bold">Edited: {n.date}</span>
+                  <button
+                    onClick={(e) => handleDeleteNote(n.id, e)}
+                    className="opacity-0 group-hover:opacity-100 hover:text-red-600 hover:scale-110 transition-all text-on-surface p-1"
+                    title="Delete note"
+                  >
+                    <span className="material-symbols-outlined text-lg">delete</span>
+                  </button>
                 </div>
               </article>
             );

@@ -4,7 +4,7 @@ from app.config import settings
 
 class GroqProvider:
     def __init__(self):
-        self.api_key = settings.GROQ_API_KEY or settings.OPENAI_API_KEY
+        self.api_key = settings.GROQ_API_KEY
         self.url = "https://api.groq.com/openai/v1/chat/completions"
         self.headers = {
             "Authorization": f"Bearer {self.api_key}",

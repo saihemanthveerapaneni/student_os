@@ -52,9 +52,6 @@ export default function SettingsPage() {
     theme: 'light',
     accentColor: 'yellow',
     fontSize: 'medium',
-    notifications: {
-      assignments: true,
-      exams: true,
       timetable: true,
       attendance: true,
       dailyStudy: false,
@@ -75,16 +72,6 @@ export default function SettingsPage() {
     calendarPrefs: {
       defaultView: 'week',
       weekStartsMonday: true,
-    },
-    privacy: {
-      visibility: 'public',
-      hideStats: false,
-    },
-    region: {
-      language: 'English',
-      timezone: 'UTC',
-      dateFormat: 'DD/MM/YYYY',
-      timeFormat: '24h',
     },
   });
 
@@ -360,52 +347,7 @@ export default function SettingsPage() {
             )}
           </div>
 
-          {/* Section 3: Notifications */}
-          <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
-            <button
-              onClick={() => toggleSection(3)}
-              className="w-full flex justify-between items-center p-4 bg-surface-container border-b-3 border-on-surface font-anton text-lg uppercase text-on-surface cursor-pointer"
-            >
-              <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined">notifications</span>
-                3. Notifications alerts
-              </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[3] ? 'expand_less' : 'expand_more'}
-              </span>
-            </button>
-            {expandedSections[3] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
-                {[
-                  { label: 'Assignment Deadlines Reminders', key: 'assignments' },
-                  { label: 'Upcoming Exam Reminders', key: 'exams' },
-                  { label: 'Timetable Class Schedule alerts', key: 'timetable' },
-                  { label: 'Attendance Attendance Drop warnings', key: 'attendance' },
-                  { label: 'Daily Study streak encouragement', key: 'dailyStudy' },
-                  { label: 'AI Study Assistant completions notifications', key: 'aiAssistant' },
-                ].map((item) => {
-                  const isChecked = settings.notifications[item.key as keyof SettingsState['notifications']];
-                  return (
-                    <div key={item.key} className="flex justify-between items-center bg-surface p-3 border-2 border-on-surface shadow-[2px_2px_0_rgba(0,0,0,1)] rounded">
-                      <span className="font-bold">{item.label}</span>
-                      <button
-                        onClick={() => handleToggleNotification(item.key as any)}
-                        className={`w-12 h-6 rounded-full border-2 border-on-surface transition-colors cursor-pointer relative p-0.5 ${
-                          isChecked ? 'bg-[#4ade80]' : 'bg-surface-container-high'
-                        }`}
-                      >
-                        <div className={`w-4.5 h-4.5 rounded-full bg-on-surface border border-on-surface transition-all ${
-                          isChecked ? 'translate-x-6' : 'translate-x-0'
-                        }`} />
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          {/* Section 4: Timetable Prefs */}
+          {/* Section 3: Timetable Prefs */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
               onClick={() => toggleSection(4)}
@@ -413,7 +355,7 @@ export default function SettingsPage() {
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">schedule</span>
-                4. Timetable preferences
+                3. Timetable preferences
               </span>
               <span className="material-symbols-outlined">
                 {expandedSections[4] ? 'expand_less' : 'expand_more'}
@@ -475,7 +417,7 @@ export default function SettingsPage() {
             )}
           </div>
 
-          {/* Section 5: AI Assistant */}
+          {/* Section 4: AI Assistant */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
               onClick={() => toggleSection(5)}
@@ -483,7 +425,7 @@ export default function SettingsPage() {
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">psychology</span>
-                5. AI Assistant
+                4. AI Assistant
               </span>
               <span className="material-symbols-outlined">
                 {expandedSections[5] ? 'expand_less' : 'expand_more'}
@@ -556,7 +498,7 @@ export default function SettingsPage() {
             )}
           </div>
 
-          {/* Section 6: Calendar */}
+          {/* Section 5: Calendar */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
               onClick={() => toggleSection(6)}
@@ -564,7 +506,7 @@ export default function SettingsPage() {
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">calendar_today</span>
-                6. Calendar configurations
+                5. Calendar configurations
               </span>
               <span className="material-symbols-outlined">
                 {expandedSections[6] ? 'expand_less' : 'expand_more'}
@@ -599,143 +541,7 @@ export default function SettingsPage() {
             )}
           </div>
 
-          {/* Section 7: Privacy */}
-          <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
-            <button
-              onClick={() => toggleSection(7)}
-              className="w-full flex justify-between items-center p-4 bg-surface-container border-b-3 border-on-surface font-anton text-lg uppercase text-on-surface cursor-pointer"
-            >
-              <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined">lock</span>
-                7. Privacy & Data export
-              </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[7] ? 'expand_less' : 'expand_more'}
-              </span>
-            </button>
-            {expandedSections[7] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-on-surface/10 pb-4">
-                  <div>
-                    <h3 className="font-bold">Profile visibility</h3>
-                    <p className="text-on-surface-variant text-sm">Control who can search and view your academic standings.</p>
-                  </div>
-                  <select
-                    value={settings.privacy.visibility}
-                    onChange={(e) => saveSettings({
-                      ...settings,
-                      privacy: { ...settings.privacy, visibility: e.target.value as any }
-                    })}
-                    className="bg-white border-2 border-on-surface p-2 text-sm font-space-grotesk font-bold text-[#1a1b22]"
-                  >
-                    <option value="public">Public (Everyone)</option>
-                    <option value="classmates">Classmates Only</option>
-                    <option value="private">Private (Only Me)</option>
-                  </select>
-                </div>
-
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-on-surface/10 pb-4">
-                  <div>
-                    <h3 className="font-bold">Data backup</h3>
-                    <p className="text-on-surface-variant text-sm">Download copy of notes, logs, and settings parameters.</p>
-                  </div>
-                  <button
-                    onClick={exportData}
-                    className="bg-[#ffe251] text-on-surface border-3 border-on-surface px-4 py-2 font-space-grotesk font-bold text-xs uppercase shadow-[2px_2px_0_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer"
-                  >
-                    Export my data
-                  </button>
-                </div>
-
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                  <div>
-                    <h3 className="font-bold text-red-600">Reset Local Storage</h3>
-                    <p className="text-on-surface-variant text-sm">Delete all logs, tasks, and notes saved locally.</p>
-                  </div>
-                  <button
-                    onClick={() => handleActionClick('delete_data')}
-                    className="bg-[#ff5c5c] text-white border-3 border-on-surface px-4 py-2 font-space-grotesk font-bold text-xs uppercase shadow-[2px_2px_0_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer"
-                  >
-                    Delete all data
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Section 8: Region */}
-          <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
-            <button
-              onClick={() => toggleSection(8)}
-              className="w-full flex justify-between items-center p-4 bg-surface-container border-b-3 border-on-surface font-anton text-lg uppercase text-on-surface cursor-pointer"
-            >
-              <span className="flex items-center gap-2">
-                <span className="material-symbols-outlined">language</span>
-                8. Language & Region
-              </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[8] ? 'expand_less' : 'expand_more'}
-              </span>
-            </button>
-            {expandedSections[8] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1">
-                    <label className="font-space-grotesk font-bold text-xs uppercase">App Language</label>
-                    <select
-                      value={settings.region.language}
-                      onChange={(e) => saveSettings({
-                        ...settings,
-                        region: { ...settings.region, language: e.target.value }
-                      })}
-                      className="bg-white border-2 border-on-surface p-2 text-sm font-space-grotesk font-bold text-[#1a1b22]"
-                    >
-                      <option value="English">English</option>
-                      <option value="Spanish">Español</option>
-                      <option value="French">Français</option>
-                      <option value="German">Deutsch</option>
-                    </select>
-                  </div>
-
-                  <div className="flex flex-col gap-1">
-                    <label className="font-space-grotesk font-bold text-xs uppercase">Time Zone</label>
-                    <select
-                      value={settings.region.timezone}
-                      onChange={(e) => saveSettings({
-                        ...settings,
-                        region: { ...settings.region, timezone: e.target.value }
-                      })}
-                      className="bg-white border-2 border-on-surface p-2 text-sm font-space-grotesk font-bold text-[#1a1b22]"
-                    >
-                      <option value="UTC">UTC (Coordinated Universal Time)</option>
-                      <option value="EST">EST (Eastern Standard Time)</option>
-                      <option value="PST">PST (Pacific Standard Time)</option>
-                      <option value="IST">IST (Indian Standard Time)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center bg-surface p-3 border-2 border-on-surface shadow-[2px_2px_0_rgba(0,0,0,1)] rounded mt-2">
-                  <span className="font-bold">Use 24-Hour Time format</span>
-                  <button
-                    onClick={() => saveSettings({
-                      ...settings,
-                      region: { ...settings.region, timeFormat: settings.region.timeFormat === '24h' ? '12h' : '24h' }
-                    })}
-                    className={`w-12 h-6 rounded-full border-2 border-on-surface transition-colors cursor-pointer relative p-0.5 ${
-                      settings.region.timeFormat === '24h' ? 'bg-[#4ade80]' : 'bg-surface-container-high'
-                    }`}
-                  >
-                    <div className={`w-4.5 h-4.5 rounded-full bg-on-surface border border-on-surface transition-all ${
-                      settings.region.timeFormat === '24h' ? 'translate-x-6' : 'translate-x-0'
-                    }`} />
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Section 9: About */}
+          {/* Section 6: About */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
               onClick={() => toggleSection(9)}
@@ -743,7 +549,7 @@ export default function SettingsPage() {
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">info</span>
-                9. About StudentOS
+                6. About StudentOS
               </span>
               <span className="material-symbols-outlined">
                 {expandedSections[9] ? 'expand_less' : 'expand_more'}

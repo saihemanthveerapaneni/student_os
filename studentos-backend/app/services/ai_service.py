@@ -1,18 +1,10 @@
 import json
 from app.config import settings
-from app.services.ai_providers.anthropic_provider import AnthropicProvider
-from app.services.ai_providers.openai_provider import OpenAIProvider
 from app.services.ai_providers.groq_provider import GroqProvider
 
 class AIService:
     def __init__(self):
-        self.provider_name = settings.AI_PROVIDER
-        if self.provider_name == "openai":
-            self.provider = OpenAIProvider()
-        elif self.provider_name == "groq":
-            self.provider = GroqProvider()
-        else:
-            self.provider = AnthropicProvider()
+        self.provider = GroqProvider()
 
     async def get_chat_response(self, user_message: str, history: list = None) -> str:
         system_prompt = "You are OS Bot, a studious and friendly neubrutalist AI assistant built into StudentOS. Help students with planning, timetables, and academic recall."
