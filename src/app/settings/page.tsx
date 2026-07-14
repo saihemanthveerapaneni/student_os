@@ -92,16 +92,7 @@ export default function SettingsPage() {
     }));
   };
 
-  const handleToggleNotification = (key: keyof SettingsState['notifications']) => {
-    const updated = {
-      ...settings,
-      notifications: {
-        ...settings.notifications,
-        [key]: !settings.notifications[key],
-      },
-    };
-    saveSettings(updated);
-  };
+
 
   const handleActionClick = (action: string) => {
     if (action === 'clear_chat') {
