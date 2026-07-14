@@ -354,39 +354,7 @@ export default function Dashboard() {
               </div>
             </Link>
 
-            {/* Quick Settings Section */}
-            <div className="md:col-span-3 flex flex-col gap-6 mt-4 border-t-4 border-on-surface pt-8">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-3xl text-on-surface">settings</span>
-                <h2 className="font-anton text-3xl uppercase text-on-surface">Settings Options</h2>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <Link href="/settings" className="bg-[#ffe251] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Account</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">person</span>
-                </Link>
-                <Link href="/settings" className="bg-[#b4c5ff] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Appearance</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">palette</span>
-                </Link>
-                <Link href="/settings" className="bg-[#4ade80] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Timetable</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">schedule</span>
-                </Link>
-                <Link href="/settings" className="bg-[#ffb59d] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">AI Assistant</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">psychology</span>
-                </Link>
-                <Link href="/settings" className="bg-[#F5F0DC] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Calendar</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">calendar_today</span>
-                </Link>
-                <Link href="/settings" className="bg-[#ff5c5c] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">About</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">info</span>
-                </Link>
-              </div>
-            </div>
+
           </section>
         </main>
       ) : (
@@ -572,39 +540,7 @@ export default function Dashboard() {
               </div>
             </Link>
 
-            {/* Quick Settings Section */}
-            <div className="md:col-span-3 flex flex-col gap-6 mt-4 border-t-4 border-on-surface pt-8">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-3xl text-on-surface">settings</span>
-                <h2 className="font-anton text-3xl uppercase text-on-surface">Settings Options</h2>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <Link href="/settings" className="bg-[#ffe251] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Account</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">person</span>
-                </Link>
-                <Link href="/settings" className="bg-[#b4c5ff] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Appearance</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">palette</span>
-                </Link>
-                <Link href="/settings" className="bg-[#4ade80] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Timetable</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">schedule</span>
-                </Link>
-                <Link href="/settings" className="bg-[#ffb59d] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">AI Assistant</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">psychology</span>
-                </Link>
-                <Link href="/settings" className="bg-[#F5F0DC] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">Calendar</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">calendar_today</span>
-                </Link>
-                <Link href="/settings" className="bg-[#ff5c5c] text-[#1a1b22] p-4 neubrutal-border neubrutal-shadow rounded-lg hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-between group">
-                  <span className="font-space-grotesk font-bold uppercase text-sm">About</span>
-                  <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">info</span>
-                </Link>
-              </div>
-            </div>
+
           </section>
         </main>
       )}
