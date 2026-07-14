@@ -95,12 +95,17 @@ export default function SettingsPage() {
   
   const { theme: currentTheme, setThemeState, setAccentColor, setFontSize } = useTheme();
 
-  // Load settings on mount
   useEffect(() => {
     const fetchSettings = async () => {
       try {
         const data = await api.getSettings();
-        setSettings(data);
+        setSettings((prev) => ({
+          ...prev,
+          ...data,
+          timetablePrefs: { ...prev.timetablePrefs, ...(data?.timetablePrefs || {}) },
+          aiPrefs: { ...prev.aiPrefs, ...(data?.aiPrefs || {}) },
+          calendarPrefs: { ...prev.calendarPrefs, ...(data?.calendarPrefs || {}) },
+        }));
       } catch (e) {
         console.error(e);
       }
