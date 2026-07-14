@@ -24,7 +24,7 @@ function AssignmentsContent() {
   // Form states
   const [title, setTitle] = useState('');
   const [subject, setSubject] = useState('');
-  const [dueDate, setDueDate] = useState('');
+  const [dueDate, setDueDate] = useState(() => new Date().toISOString().split('T')[0]);
   const [status, setStatus] = useState<'Due Today' | 'In Progress' | 'Done'>('Due Today');
   const [notes, setNotes] = useState('');
 
@@ -74,7 +74,7 @@ function AssignmentsContent() {
     // Reset Form
     setTitle('');
     setSubject('');
-    setDueDate('');
+    setDueDate(new Date().toISOString().split('T')[0]);
     setStatus('Due Today');
     setNotes('');
     setIsModalOpen(false);
@@ -275,12 +275,11 @@ function AssignmentsContent() {
                 <div className="flex flex-col gap-1">
                   <label className="font-space-grotesk font-bold text-xs uppercase">Due Date</label>
                   <input
-                    type="text"
+                    type="date"
                     required
                     value={dueDate}
                     onChange={(e) => setDueDate(e.target.value)}
                     className="w-full bg-white border-3 border-on-surface p-2 font-archivo-narrow text-base focus:outline-none"
-                    placeholder="e.g. Oct 12"
                   />
                 </div>
               </div>

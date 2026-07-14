@@ -69,7 +69,7 @@ export default function Dashboard() {
   // Modal state
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [taskTitle, setTaskTitle] = useState('');
-  const [taskDueDate, setTaskDueDate] = useState('Today');
+  const [taskDueDate, setTaskDueDate] = useState(() => new Date().toISOString().split('T')[0]);
   const [taskStatus, setTaskStatus] = useState<'pending' | 'in_progress' | 'done'>('pending');
 
   const loadData = async () => {
@@ -160,7 +160,7 @@ export default function Dashboard() {
     
     // Reset modal
     setTaskTitle('');
-    setTaskDueDate('Today');
+    setTaskDueDate(new Date().toISOString().split('T')[0]);
     setTaskStatus('pending');
     setIsTaskModalOpen(false);
   };
@@ -576,16 +576,12 @@ export default function Dashboard() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1">
                   <label className="font-space-grotesk font-bold text-xs uppercase">Due Date</label>
-                  <select
+                  <input
+                    type="date"
                     value={taskDueDate}
                     onChange={(e) => setTaskDueDate(e.target.value)}
                     className="w-full bg-white border-3 border-on-surface p-2 font-space-grotesk font-bold focus:outline-none text-[#1a1b22]"
-                  >
-                    <option value="Today">Today</option>
-                    <option value="Tomorrow">Tomorrow</option>
-                    <option value="Next Week">Next Week</option>
-                    <option value="Next Month">Next Month</option>
-                  </select>
+                  />
                 </div>
 
                 <div className="flex flex-col gap-1">
