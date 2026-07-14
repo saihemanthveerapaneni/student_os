@@ -118,10 +118,13 @@ export default function SettingsPage() {
   };
 
   const toggleSection = (id: number) => {
-    setExpandedSections((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+    setExpandedSections((prev) => {
+      if (prev[id]) {
+        return {};
+      } else {
+        return { [id]: true };
+      }
+    });
   };
 
 
@@ -231,12 +234,13 @@ export default function SettingsPage() {
                 <span className="material-symbols-outlined">person</span>
                 1. Account Settings
               </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[1] ? 'expand_less' : 'expand_more'}
+              <span className={`material-symbols-outlined transition-transform duration-300 ${expandedSections[1] ? 'rotate-180' : ''}`}>
+                expand_more
               </span>
             </button>
-            {expandedSections[1] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
+            <div className={`grid transition-all duration-300 ease-in-out ${expandedSections[1] ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div className="overflow-hidden">
+                <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface max-h-[60vh] overflow-y-auto custom-scrollbar">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-on-surface/10 pb-4">
                   <div>
                     <h3 className="font-bold text-lg">Manage Profile Details</h3>
@@ -278,7 +282,8 @@ export default function SettingsPage() {
                   </button>
                 </div>
               </div>
-            )}
+              </div>
+            </div>
           </div>
 
           {/* Section 2: Appearance */}
@@ -291,12 +296,13 @@ export default function SettingsPage() {
                 <span className="material-symbols-outlined">palette</span>
                 2. Appearance & Styling
               </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[2] ? 'expand_less' : 'expand_more'}
+              <span className={`material-symbols-outlined transition-transform duration-300 ${expandedSections[2] ? 'rotate-180' : ''}`}>
+                expand_more
               </span>
             </button>
-            {expandedSections[2] && (
-              <div className="p-5 flex flex-col gap-6 font-archivo-narrow text-base text-on-surface">
+            <div className={`grid transition-all duration-300 ease-in-out ${expandedSections[2] ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div className="overflow-hidden">
+                <div className="p-5 flex flex-col gap-6 font-archivo-narrow text-base text-on-surface max-h-[60vh] overflow-y-auto custom-scrollbar">
                 {/* Theme Selector */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   <div>
@@ -377,25 +383,27 @@ export default function SettingsPage() {
                   </div>
                 </div>
               </div>
-            )}
+              </div>
+            </div>
           </div>
 
           {/* Section 3: Timetable Prefs */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
-              onClick={() => toggleSection(4)}
+              onClick={() => toggleSection(3)}
               className="w-full flex justify-between items-center p-4 bg-surface-container border-b-3 border-on-surface font-anton text-lg uppercase text-on-surface cursor-pointer"
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">schedule</span>
                 3. Timetable preferences
               </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[4] ? 'expand_less' : 'expand_more'}
+              <span className={`material-symbols-outlined transition-transform duration-300 ${expandedSections[3] ? 'rotate-180' : ''}`}>
+                expand_more
               </span>
             </button>
-            {expandedSections[4] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
+            <div className={`grid transition-all duration-300 ease-in-out ${expandedSections[3] ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div className="overflow-hidden">
+                <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface max-h-[60vh] overflow-y-auto custom-scrollbar">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1">
                     <label className="font-space-grotesk font-bold text-xs uppercase">First Day of the Week</label>
@@ -447,25 +455,27 @@ export default function SettingsPage() {
                   </button>
                 </div>
               </div>
-            )}
+              </div>
+            </div>
           </div>
 
           {/* Section 4: AI Assistant */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
-              onClick={() => toggleSection(5)}
+              onClick={() => toggleSection(4)}
               className="w-full flex justify-between items-center p-4 bg-surface-container border-b-3 border-on-surface font-anton text-lg uppercase text-on-surface cursor-pointer"
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">psychology</span>
                 4. AI Assistant
               </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[5] ? 'expand_less' : 'expand_more'}
+              <span className={`material-symbols-outlined transition-transform duration-300 ${expandedSections[4] ? 'rotate-180' : ''}`}>
+                expand_more
               </span>
             </button>
-            {expandedSections[5] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
+            <div className={`grid transition-all duration-300 ease-in-out ${expandedSections[4] ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div className="overflow-hidden">
+                <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface max-h-[60vh] overflow-y-auto custom-scrollbar">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1">
                     <label className="font-space-grotesk font-bold text-xs uppercase">Preferred AI model</label>
@@ -528,25 +538,27 @@ export default function SettingsPage() {
                   Clear AI chat history
                 </button>
               </div>
-            )}
+              </div>
+            </div>
           </div>
 
           {/* Section 5: Calendar */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
-              onClick={() => toggleSection(6)}
+              onClick={() => toggleSection(5)}
               className="w-full flex justify-between items-center p-4 bg-surface-container border-b-3 border-on-surface font-anton text-lg uppercase text-on-surface cursor-pointer"
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">calendar_today</span>
                 5. Calendar configurations
               </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[6] ? 'expand_less' : 'expand_more'}
+              <span className={`material-symbols-outlined transition-transform duration-300 ${expandedSections[5] ? 'rotate-180' : ''}`}>
+                expand_more
               </span>
             </button>
-            {expandedSections[6] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
+            <div className={`grid transition-all duration-300 ease-in-out ${expandedSections[5] ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div className="overflow-hidden">
+                <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface max-h-[60vh] overflow-y-auto custom-scrollbar">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                   <div>
                     <h3 className="font-bold">Default calendar view</h3>
@@ -571,25 +583,27 @@ export default function SettingsPage() {
                 </div>
 
               </div>
-            )}
+              </div>
+            </div>
           </div>
 
           {/* Section 6: About */}
           <div className="border-3 border-on-surface bg-background rounded shadow-[3px_3px_0_var(--shadow-color)] overflow-hidden">
             <button
-              onClick={() => toggleSection(9)}
+              onClick={() => toggleSection(6)}
               className="w-full flex justify-between items-center p-4 bg-surface-container border-b-3 border-on-surface font-anton text-lg uppercase text-on-surface cursor-pointer"
             >
               <span className="flex items-center gap-2">
                 <span className="material-symbols-outlined">info</span>
                 6. About StudentOS
               </span>
-              <span className="material-symbols-outlined">
-                {expandedSections[9] ? 'expand_less' : 'expand_more'}
+              <span className={`material-symbols-outlined transition-transform duration-300 ${expandedSections[6] ? 'rotate-180' : ''}`}>
+                expand_more
               </span>
             </button>
-            {expandedSections[9] && (
-              <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface">
+            <div className={`grid transition-all duration-300 ease-in-out ${expandedSections[6] ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+              <div className="overflow-hidden">
+                <div className="p-5 flex flex-col gap-4 font-archivo-narrow text-base text-on-surface max-h-[60vh] overflow-y-auto custom-scrollbar">
                 <div className="flex justify-between border-b border-on-surface/10 pb-3">
                   <span className="font-bold">App Version</span>
                   <span className="font-space-grotesk font-bold text-xs uppercase bg-[#ffe251] px-2 py-0.5 border-2 border-on-surface shadow-[1px_1px_0_rgba(0,0,0,1)]">
@@ -612,7 +626,8 @@ export default function SettingsPage() {
                   </button>
                 </div>
               </div>
-            )}
+              </div>
+            </div>
           </div>
 
         </section>
